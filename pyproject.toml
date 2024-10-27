@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "tabletop city management game"
+version = "0.1.0"
+description = "This is a city builder manager for tabletop players."
+authors = ["Danny Comeau"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.3"
+uvicorn = "^0.32.0"
+sqlalchemy-orm = "^1.2.10"
+sqlalchemy = "^2.0.36"
+typing-extensions = "^4.12.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
