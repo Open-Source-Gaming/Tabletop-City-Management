@@ -4,6 +4,7 @@
 from db.config import DatabaseConfig
 from api.controllers import buildings
 from api.controllers import cities
+from api.controllers import reports
 
 
 # Imports from third party packages
@@ -17,6 +18,7 @@ db = DatabaseConfig()
 
 app.include_router(buildings.router)
 app.include_router(cities.router)
+app.include_router(reports.router)
 
 
 @app.get("/")

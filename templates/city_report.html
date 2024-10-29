@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>City Report</title>
+</head>
+<body>
+    <h1>City Report for {{ city.name }}</h1>
+    <h2>City Details</h2>
+    <ul>
+        <li>ID: {{ city.id }}</li>
+        <li>Type: {{ city.type }}</li>
+        <li>Population: {{ city.population }}</li>
+        <li>Tax per Month: {{ city.tax_per_month }}</li>
+    </ul>
+    <h2>Buildings</h2>
+    <ul>
+        {% for building in buildings %}
+        <li>{{ building.name }} - Level: {{ building.level }}, Cost: {{ building.cost }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

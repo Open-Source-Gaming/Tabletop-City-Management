@@ -10,6 +10,18 @@ ENV PATH="/root/.local/bin:$PATH"
 # Set the working directory in the container
 WORKDIR /code
 
+# Install dependencies for wkhtmltopdf
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    wget \
+    xfonts-75dpi \
+    xfonts-base && \
+    wget -O /tmp/wkhtmltopdf.deb https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb && \
+    apt-get install -y /tmp/wkhtmltopdf.deb && \
+    rm /tmp/wkhtmltopdf.deb && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Copy the pyproject.toml and poetry.lock files into the container
 COPY ./pyproject.toml ./poetry.lock* /code/
 

@@ -45,6 +45,11 @@ class BuildingCostFilter(str, Enum):
     greater = "greater"
 
 
+class ReportType(str, Enum):
+    pdf = "pdf"
+    html = "html"
+
+
 class FilterType(str, Enum):
     less = "less"
     less_or_equal = "less_or_equal"
