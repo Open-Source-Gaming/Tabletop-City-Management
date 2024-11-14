@@ -13,14 +13,12 @@ WORKDIR /code
 # Install dependencies for wkhtmltopdf
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    wget \
+    wkhtmltopdf \
     xfonts-75dpi \
     xfonts-base && \
-    wget -O /tmp/wkhtmltopdf.deb https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb && \
-    apt-get install -y /tmp/wkhtmltopdf.deb && \
-    rm /tmp/wkhtmltopdf.deb && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
 
 # Copy the pyproject.toml and poetry.lock files into the container
 COPY ./pyproject.toml ./poetry.lock* /code/
@@ -32,4 +30,4 @@ RUN poetry install --no-root
 COPY . /code
 
 # Command to run the application
-CMD ["poetry", "run", "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["poetry", "run", "uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8080"]
