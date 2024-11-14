@@ -2,9 +2,7 @@
 # This is the main file for the FastAPI application. It contains the main logic for the application.
 # Imports from local packages
 from db.config import DatabaseConfig
-from api.controllers import buildings
-from api.controllers import cities
-from api.controllers import reports
+from api.controllers import buildings, cities, forward_time, reports
 
 
 # Imports from third party packages
@@ -18,6 +16,7 @@ db = DatabaseConfig()
 
 app.include_router(buildings.router)
 app.include_router(cities.router)
+app.include_router(forward_time.router)
 app.include_router(reports.router)
 
 
