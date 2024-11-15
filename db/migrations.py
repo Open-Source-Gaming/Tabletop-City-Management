@@ -4,7 +4,7 @@
 
 
 # Imports from third party packages
-from sqlalchemy import Engine, Integer, String, ForeignKey
+from sqlalchemy import Engine, Integer, String, ForeignKey, Float
 from sqlalchemy.orm import mapped_column, relationship, DeclarativeBase, Mapped
 
 
@@ -33,11 +33,13 @@ class Buildings(Base):
     name: Mapped[str] = mapped_column(String())
     level: Mapped[int] = mapped_column(Integer)
     cost: Mapped[int] = mapped_column(Integer)
+    revenue_modifier: Mapped[float] = mapped_column(Float)
 
     city_buildings = relationship("CityBuildings", back_populates="building")
 
     def __repr__(self) -> str:
-        return f"Building(name={self.name!r}, level={self.level!r}, cost={self.cost!r})"
+        return (f"Building(name={self.name!r}, level={self.level!r}, "
+                f"cost={self.cost!r}), revenue_modifier={self.revenue_modifier!r}")
 
 
 class Cities(Base):
@@ -68,4 +70,3 @@ class CityBuildings(Base):
 
     def __repr__(self) -> str:
         return f"CityBuilding(city_id={self.city_id!r}, building_id={self.building_id!r})"
-
