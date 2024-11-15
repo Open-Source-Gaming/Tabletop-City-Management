@@ -12,8 +12,8 @@ class ForwardTimeFactory:
         pass
 
     @staticmethod
-    def create_forward_time_model(king_tax_revenue: int, players_tax_revenue: int,
-                                  village_gross_income: int, village_net_income: int):
+    def create_forward_time_model(king_tax_revenue: float, players_tax_revenue: float,
+                                  village_gross_income: float, village_net_income: float):
         return ForwardTime(
             king_tax_revenue=king_tax_revenue,
             players_tax_revenue=players_tax_revenue,

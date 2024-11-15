@@ -12,6 +12,7 @@ class Buildings(BaseModel):
     name: str
     level: int
     cost: int
+    revenue_modifier: float
 
     class Config:
         model_config = {'from_attributes': True}

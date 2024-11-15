@@ -8,7 +8,7 @@ from pydantic import BaseModel
 
 
 class ForwardTime(BaseModel):
-    king_tax_revenue: int
-    players_tax_revenue: int
-    village_gross_income: int
-    village_net_income: int
+    king_tax_revenue: float
+    players_tax_revenue: float
+    village_gross_income: float
+    village_net_income: float

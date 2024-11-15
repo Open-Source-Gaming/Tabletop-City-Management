@@ -7,6 +7,7 @@
 from api.factories.forward_time import ForwardTimeFactory
 from api.models.enums import TaxRecipient
 from api.services.cities import CitiesService
+from api.services.revenue import RevenueService
 from api.services.taxes import TaxesService
 from api.utils.config import Config
 
@@ -14,6 +15,7 @@ from api.utils.config import Config
 city_service = CitiesService()
 config = Config()
 factory = ForwardTimeFactory()
+revenue_service = RevenueService()
 tax_service = TaxesService()
 
 
@@ -24,10 +26,10 @@ class ForwardTimeService:
     @staticmethod
     def forward_time(city_id: int, players: int):
         city_info = city_service.get_city_with_metadata(city_id)
-        population = city_info.city.population
-        time_passed = config.rate_of_time_forward_by_players(players)
 
-        revenue = population * config.city_base_revenue_rate() * time_passed
+        revenue = revenue_service.calculate_revenue(city_info.city.population,
+                                                    config.rate_of_time_forward_by_players(players),
+                                                    city_info.buildings)
 
         remaining_revenue = revenue
         tax_results = {}
